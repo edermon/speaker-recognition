@@ -110,9 +110,8 @@ RUN pip2 install bob.sp
 # https://github.com/ppwwyyxx/speaker-recognition
 ###############################################################################
 RUN cd ~/ && \
-    git clone https://github.com/ppwwyyxx/speaker-recognition.git && \
+    git clone https://github.com/edermon/speaker-recognition.git && \
     cd ~/speaker-recognition && \
-    make -C src/gmm
 
 
 # Clean up
@@ -121,4 +120,5 @@ RUN apt-get clean &&apt-get autoremove -y && rm -rf /var/lib/apt/lists/* /tmp/* 
 
 # Entrypoint - so `docker run speaker-recognition` will automatically run the python main
 ###############################################################################
-ENTRYPOINT ["/usr/bin/python", "/root/speaker-recognition/src/speaker-recognition.py"]
+ENTRYPOINT ["/usr/bin/python", "/root/speaker-recognition/src/speaker-recognition.py -t enroll -i \"./eder/\" -m model.out"]
+
