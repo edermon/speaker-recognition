@@ -112,6 +112,7 @@ RUN pip2 install bob.sp
 RUN cd ~/ && \
     git clone https://github.com/edermon/speaker-recognition.git && \
     cd ~/speaker-recognition && \
+    make -C src/gmm
 
 
 # Clean up
